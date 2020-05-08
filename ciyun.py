@@ -10,11 +10,14 @@ import re
 import csv
 
 CURDIR = os.path.abspath(os.path.dirname(__file__))
-PICTURE = os.path.join(CURDIR, 'ciyun.png')
+PICTURE = os.path.join(CURDIR, 'ciyun2.jpg')
 FONT = os.path.join(CURDIR, 'simsun.ttc')
 
-jieba.add_word('新型冠状病毒')
-jieba.add_word('新冠病毒')
+add_word_list = ['江山娇', '红旗漫', '如何治疗', '死透', '一座塔', '无聊瞎直播', '语料快闪', '恩施生活', '身边事', '水润', '快闪店', '快闪店', 'pop-up', 'POP-UP',
+                 'L秒拍视频', '秒拍', '低幼化', '大宗商品']
+for word in add_word_list:
+    jieba.add_word(word)
+
 
 def cut_the_words():
     with open('data.csv', 'r', encoding='utf-8') as csvfile:
@@ -46,11 +49,13 @@ def create_worlds_cloud():
         content = f.read().splitlines()
         remove_words = content
     remove_words = remove_words + [u'的', u'，', u'和', u'是', u'随着', u'对于', u'对', u'等', u'能', u'都', u'。', u' ', u'、', u'中', u'在', u'了',
-                    u'通常', u'如果', u'我们', u'需要', u'不平', u'很', u'北', u'看完', u'人', u'我', u'看', u'不',
-                    u'有', u'被', u'也', u'！', u'小', u'电影', u'就', u'周', u'你', u'', u'她', u'他', u'烊'
-                    , u'千', u'玺', u'周', u'一个', u'这', u'一个', u'易', u'陈', u'一个', u'念', u'他们'
-                    , u'才', u'戏', u'念', u'念', u'念', u'念', u'念', u'念', '日', '月', '2', '网', '新', '传', '晚']  # 自定义去除词库
-
+                    u'通常', u'如果', u'我们', u'死', u'不平', u'很', u'北', u'看完', u'人', u'我', u'看', u'不',
+                    u'有', u'被', u'也', u'！', u'小', u'美美', u'就', u'微', u'店', u'', u'她', u'他', u'烊'
+                    , u'千', u'玺', u'一座', u'一个', u'这', u'一个', u'易', u'陈', u'一个', u'念', u'他们'
+                    , u'雀', u'戏', u'##', u'念', u'百', u'L', u'念', u'念', '日', '月', '2', '网', '新', '转发', '晚',
+                                   'O', '链接', '哈哈哈哈', '丽', '热', '邓', '搜', '全文', '收起', 'd', '元', '拍',
+                                   '快', '大宗', '闪', '说', '红旗', '领', '茜', '靳', '加', '包', '东', '聊', '价', '复制', '博',
+                                   '太', '祥', '秒', '志', '江山', '+1']  # 自定义去除词库
 
     for word in seg_list_exact:  # 循环读出每个分词
         if word not in remove_words:  # 如果不在去除词库中
@@ -81,7 +86,7 @@ def save_data(file_name, data_list):
     :return:
     """
     f_name = file_name + ".csv"
-    f = open(f_name, "a", newline="", encoding="utf-8")
+    f = open(f_name, "w", newline="", encoding="utf-8")
     c = csv.writer(f)
     for i in data_list:
         c.writerow(i)

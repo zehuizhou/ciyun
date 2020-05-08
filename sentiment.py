@@ -11,6 +11,7 @@ def sentiment(content):
     s = SnowNLP(str(content))
     return s.sentiments
 
+
 sentiment_list = []
 for comment in column:
     score = sentiment(comment)

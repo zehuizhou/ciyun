@@ -34,4 +34,6 @@ plt.rcParams['font.sans-serif'] = ['SimHei']  # 步骤一（替换sans-serif字�
 plt.title('评价统计', FontProperties=font)
 a = plt.bar(x, y)
 autolabel(a)
+
+plt.savefig("filename.png")
 plt.show()
