@@ -10,10 +10,10 @@ import re
 import csv
 
 CURDIR = os.path.abspath(os.path.dirname(__file__))
-PICTURE = os.path.join(CURDIR, 'ciyun2.jpg')
+PICTURE = os.path.join(CURDIR, 'ciyun.png')
 FONT = os.path.join(CURDIR, 'simsun.ttc')
 
-add_word_list = ['江山娇', '红旗漫', '如何治疗', '死透', '一座塔', '无聊瞎直播', '语料快闪', '恩施生活', '身边事', '水润', '快闪店', '快闪店', 'pop-up', 'POP-UP',
+add_word_list = ['鹿晗', '黄子韬', '许嵩', '罗志祥', '张杰', '毛不易', '宋茜', '创造营', '身边事', '水润', '快闪店', '快闪店', 'pop-up', 'POP-UP',
                  'L秒拍视频', '秒拍', '低幼化', '大宗商品']
 for word in add_word_list:
     jieba.add_word(word)
@@ -48,14 +48,14 @@ def create_worlds_cloud():
     with open('哈工大停用词表.txt', 'r', encoding='utf-8') as f:
         content = f.read().splitlines()
         remove_words = content
-    remove_words = remove_words + [u'的', u'，', u'和', u'是', u'随着', u'对于', u'对', u'等', u'能', u'都', u'。', u' ', u'、', u'中', u'在', u'了',
-                    u'通常', u'如果', u'我们', u'死', u'不平', u'很', u'北', u'看完', u'人', u'我', u'看', u'不',
-                    u'有', u'被', u'也', u'！', u'小', u'美美', u'就', u'微', u'店', u'', u'她', u'他', u'烊'
-                    , u'千', u'玺', u'一座', u'一个', u'这', u'一个', u'易', u'陈', u'一个', u'念', u'他们'
-                    , u'雀', u'戏', u'##', u'念', u'百', u'L', u'念', u'念', '日', '月', '2', '网', '新', '转发', '晚',
-                                   'O', '链接', '哈哈哈哈', '丽', '热', '邓', '搜', '全文', '收起', 'd', '元', '拍',
-                                   '快', '大宗', '闪', '说', '红旗', '领', '茜', '靳', '加', '包', '东', '聊', '价', '复制', '博',
-                                   '太', '祥', '秒', '志', '江山', '+1']  # 自定义去除词库
+    remove_words = remove_words + [u'君', u'挠', u'屈', u'全文', u'理', u'勿', u'对', u'等', u'能', u'都', u'。', u' ', u'、', u'中', u'在', u'了',
+                    u'3601', u'如果', u'我们', u'死', u'不平', u'毛', u'不易', u'看完', u'人', u'我', u'会', u'不',
+                    u'有', u'被', u'也', u'！', u'小', u'许', u'营', u'微', u'店', u'', u'她', u'宋', u'茜'
+                    , u'千', u'玺', u'一座', u'嵩', u'这', u'魔', u'易', u'陈', u'一个', u'黄', u'他们'
+                    , u'雀', u'戏', u'##', u'念', u'百', u'L', u'念', u'张', '日', '月', '2', '网', '新', '转发', '晚',
+                                   'O', '链接', '哈哈哈哈', '丽', '热', '邓', '搜', '子', '杰', 'd', '元', '拍',
+                                   '快', '大宗', '闪', '说', '红旗', '韬', '茜', '靳', '加', '包', '东', '聊', '价', '复制', '博',
+                                   '太', '鹿', '晗', '辛', '罗', '+1']  # 自定义去除词库
 
     for word in seg_list_exact:  # 循环读出每个分词
         if word not in remove_words:  # 如果不在去除词库中

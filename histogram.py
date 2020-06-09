@@ -3,6 +3,7 @@ from matplotlib.font_manager import FontProperties
 from collections import Counter
 import csv
 
+
 # 设置柱状图上面的值
 def autolabel(rects):
     for rect in rects:
